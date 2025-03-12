@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body id='o7'>
+    <script>
+       
+
+        let dt;
+
+ function login(dt) {
+     fetch(`/logjin`, {
+         method: 'POST', credentials: 'same-origin', headers: {
+             Origin: '*',
+             'Content-Type': 'application/json'
+             // 'Content-Type': 'application/x-www-form-urlencoded',
+         }, body:dt }).then(handleResponse2)
+   };
+
+        async function init () {
+
+
+            fetch('/lg', { method: 'POST', credentials: 'same-origin' }, dt)
+     .then(handleResponse)
+     .catch(function (err) {
+       console.log(err.message);
+     });
+ };
+
+         function handleResponse2(response) {
+            // console.log(window.document.cookie)
+
+  return response? response.json().then((data) => {
+          if (data.result === 'OK') { console.log('LOGIN'), window.parent.postMessage(data,'*') }
+      })
+    : Promise.reject(new Error('Unexpected response'));
+         }
+
+        function handleResponse(response) {
+            // console.log(window.document.cookie)
+
+            return response.ok
+                ? response.json().then((data) => {
+                    if (data.result === 'nOK') { login() }
+                    else { window.parent.postMessage(data, '*') }
+                })
+                : Promise.reject(new Error('Unexpected response'));
+        }
+
+
+
+      
+        self.onmessage = function (e) { dt =e.data; login(dt) }
+
+       
+    </script>
+</body>
+</html>
