@@ -1,0 +1,127 @@
+.cards_number-6-hover:hover {
+    box-shadow: 0px 0px 10px yellow;
+    transform: translateY(-20px) scale(1.5);
+    z-index: 2;
+}
+
+
+ .hearts6{
+    background-image: url(../webp/hearts6.webp);
+}
+ .hearts7{
+    background-image: url(../webp/hearts7.webp);
+}
+ .hearts8{
+    background-image: url(../webp/hearts8.webp);
+}
+ .hearts9{
+    background-image: url(../webp/hearts9.webp);
+}
+ .hearts10{
+    background-image: url(../webp/hearts10.webp);
+}
+
+ .heartsA{
+    background-image: url(../webp/heartsA.webp);
+}
+ .heartsK{
+    background-image: url(../webp/heartsK.webp);
+}
+ .heartsQ{
+    background-image: url(../webp/heartsQ.webp);
+}
+ .heartsJ{
+    background-image: url(../webp/heartsJ.webp);
+}
+ .clubs6{
+    background-image: url(../webp/clubs6.webp);
+}
+ .clubs7{
+    background-image: url(../webp/clubs7.webp);
+}
+ .clubs8{
+    background-image: url(../webp/clubs8.webp);
+}
+ .clubs9{
+    background-image: url(../webp/clubs9.webp);
+}
+ .clubs10{
+    background-image: url(../webp/clubs10.webp);
+}
+ .clubsA{
+    background-image: url(../webp/clubsA.webp);
+}
+ .clubsK{
+    background-image: url(../webp/clubsK.webp);
+}
+ .clubsQ{
+    background-image: url(../webp/clubsQ.webp);
+}
+ .clubsJ{
+    background-image: url(../webp/clubsJ.webp);
+}
+ .diamonds6{
+    background-image: url(../webp/diamonds6.webp);
+}
+ .diamonds7{
+    background-image: url(../webp/diamonds7.webp);
+}
+ .diamonds8{
+    background-image: url(../webp/diamonds8.webp);
+}
+ .diamonds9{
+    background-image: url(../webp/diamonds9.webp);
+}
+ .diamonds10{
+    background-image: url(../webp/diamonds10.webp);
+}
+ .diamondsA{
+    background-image: url(../webp/diamondsA.webp);
+}
+ .diamondsK{
+    background-image: url(../webp/diamondsK.webp);
+}
+ .diamondsQ{
+    background-image: url(../webp/diamondsQ.webp);
+}
+ .diamondsJ{
+    background-image: url(../webp/diamondsJ.webp);
+}
+ .spades6{
+    background-image: url(../webp/spades6.webp);
+}
+ .spades7{
+    background-image: url(../webp/spades7.webp);
+}
+ .spades8{
+    background-image: url(../webp/spades8.webp);
+}
+ .spades9{
+    background-image: url(../webp/spades9.webp);
+}
+ .spades10{
+    background-image: url(../webp/spades10.webp);
+}
+ .spadesA{
+    background-image: url(../webp/spadesA.webp);
+}
+ .spadesK{
+    background-image: url(../webp/spadesK.webp);
+}
+ .spadesQ{
+    background-image: url(../webp/spadesQ.webp);
+}
+ .spadesJ{
+    background-image: url(../webp/spadesJ.webp);
+}
+
+
+.card-back{ background-image: url(../webp/card-back.webp);}
+
+.card_img {
+    width: 57px;
+    height: 89px;
+    border-radius: 7px;
+    transition: transform 250ms;
+	background-size: cover;
+}

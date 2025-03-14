@@ -41,14 +41,7 @@ body {
 	position: relative;
     z-index: -1;
 }
-  motion-todos {
-      width: 600px;
-    }
-
-    @media screen and (max-width: 600px) {
-      motion-todos {
-        width: 100%;
-      }}
+ 
 .btn {
     font-size: medium;
     border-block-color: blue;
@@ -162,11 +155,7 @@ h1, h2, h3, h4, h5, h6, p {
     flex-direction: column;
 }
 
-.field {
-    display: flex;
-    flex-direction: column;
-    min-height: 98%;
-}
+
 
 .buttons {
     right: 0;
@@ -177,57 +166,7 @@ h1, h2, h3, h4, h5, h6, p {
     padding: 20px;
 }
 
-.left {
-    min-width: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.right {
-    min-width: 220px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.player-title {
-    margin-top: -80px;
-    margin-bottom: 80px;
-}
-
-.player3CardsContainer {
-    position: relative;
-    width: 300px;
-    height: 120px;
-    transform: rotate(-90deg)
-}
-
-.player2CardsContainer {
-    position: relative;
-    width: 300px;
-    height: 120px;
-    transform: rotate(90deg)
-}
-
-.player1CardsContainer {
-    margin: 20px 0;
-    position: relative;
-    width: 300px;
-    height: 120px;
-    transform: scaleY(-1);
-}
-
-.player0CardsContainer {
-    margin: 20px 0;
-    position: relative;
-    width: 300px;
-    height: 120px;
-}
-
-.player1 {
-    align-items: end;
-}
 
 .content {
     height: 100%;
@@ -240,8 +179,7 @@ h1, h2, h3, h4, h5, h6, p {
     position: relative;
 }
 
-.card_table {
-}
+
 
 .deck_card {
     position: absolute;
@@ -296,25 +234,7 @@ h1, h2, h3, h4, h5, h6, p {
     font-size: 32px;
     text-align: center;
 }
-p.qs {
-    display: inline-block;
-    width: 100%;
-    font-size: 32px;
-    color: red;
-    margin: 12px;
-}
 
-.left {
-    float: left;
-    width: 100px;
-    min-height: 100%;
-}
-
-.right {
-    float: right;
-    width: 100px;
-    min-height: 100%;
-}
 
 .footer {
     min-height: 150px;
@@ -325,157 +245,7 @@ p.qs {
 	z-index: -3;
 }
 
-.card_img {
-    width: 57px;
-    height: 89px;
-    border-radius: 7px;
-    transition: transform 250ms;
-	background-size: cover;
-}
 
-.cards_number-lastCard {
-    transform: rotate(-90deg);
-    position: absolute;
-    right: 25%;
-    z-index:auto;
-}
-
-
-.cards_number-6-hover:hover {
-    box-shadow: 0px 0px 10px yellow;
-    transform: translateY(-20px) scale(1.5);
-    z-index: 2;
-}
-
-
-.move-to-0 {
-    transform: translateX(20px)
-}
-  
-  .cards_number-55 {
-	  position:relative;
-   width: 57px;
-    height: 89px;
-    border-radius: 7px;  
-}
- .hearts6{
-    background-image: url(../webp/hearts6.webp);
-}
- .hearts7{
-    background-image: url(../webp/hearts7.webp);
-}
- .hearts8{
-    background-image: url(../webp/hearts8.webp);
-}
- .hearts9{
-    background-image: url(../webp/hearts9.webp);
-}
- .hearts10{
-    background-image: url(../webp/hearts10.webp);
-}
-
- .heartsA{
-    background-image: url(../webp/heartsA.webp);
-}
- .heartsK{
-    background-image: url(../webp/heartsK.webp);
-}
- .heartsQ{
-    background-image: url(../webp/heartsQ.webp);
-}
- .heartsJ{
-    background-image: url(../webp/heartsJ.webp);
-}
- .clubs6{
-    background-image: url(../webp/clubs6.webp);
-}
- .clubs7{
-    background-image: url(../webp/clubs7.webp);
-}
- .clubs8{
-    background-image: url(../webp/clubs8.webp);
-}
- .clubs9{
-    background-image: url(../webp/clubs9.webp);
-}
- .clubs10{
-    background-image: url(../webp/clubs10.webp);
-}
- .clubsA{
-    background-image: url(../webp/clubsA.webp);
-}
- .clubsK{
-    background-image: url(../webp/clubsK.webp);
-}
- .clubsQ{
-    background-image: url(../webp/clubsQ.webp);
-}
- .clubsJ{
-    background-image: url(../webp/clubsJ.webp);
-}
- .diamonds6{
-    background-image: url(../webp/diamonds6.webp);
-}
- .diamonds7{
-    background-image: url(../webp/diamonds7.webp);
-}
- .diamonds8{
-    background-image: url(../webp/diamonds8.webp);
-}
- .diamonds9{
-    background-image: url(../webp/diamonds9.webp);
-}
- .diamonds10{
-    background-image: url(../webp/diamonds10.webp);
-}
- .diamondsA{
-    background-image: url(../webp/diamondsA.webp);
-}
- .diamondsK{
-    background-image: url(../webp/diamondsK.webp);
-}
- .diamondsQ{
-    background-image: url(../webp/diamondsQ.webp);
-}
- .diamondsJ{
-    background-image: url(../webp/diamondsJ.webp);
-}
- .spades6{
-    background-image: url(../webp/spades6.webp);
-}
- .spades7{
-    background-image: url(../webp/spades7.webp);
-}
- .spades8{
-    background-image: url(../webp/spades8.webp);
-}
- .spades9{
-    background-image: url(../webp/spades9.webp);
-}
- .spades10{
-    background-image: url(../webp/spades10.webp);
-}
- .spadesA{
-    background-image: url(../webp/spadesA.webp);
-}
- .spadesK{
-    background-image: url(../webp/spadesK.webp);
-}
- .spadesQ{
-    background-image: url(../webp/spadesQ.webp);
-}
- .spadesJ{
-    background-image: url(../webp/spadesJ.webp);
-}
-
-
-.card-back{ background-image: url(../webp/card-back.webp);}
-p.q{display: inline-block;
-    width: 100%;
-    font-size: 46px;
-	color:red;
-	margin: 12px;
-}
 .g_n {
    
 	background-color:#0098ff94;
