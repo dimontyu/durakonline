@@ -2,7 +2,7 @@
 
 export async function defclick(e){
 
-	if( e.target.style.top==="-256px"||e.target.style.top==="-375px")return
+	if( e.target.style.top[0]==="-")return
 e.preventDefault
 
 let d= e.target.status;

@@ -322,6 +322,7 @@ p.qs {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+	z-index: -3;
 }
 
 .card_img {

@@ -4,7 +4,7 @@ export async function imgclick(e){
 var client = window.innerWidth < "600";
 let pss=this.passes;	
 let xx=(this._myrole==='attacker2' && !this.new_count)	
-//if(e.target.style.top==="-256px"||e.target.style.top==="-375px" )return
+if(e.target.style.top[0]==="-" )return
 if(xx&& pss===0 )return
 e.preventDefault
 //Av.push(e.target);

@@ -82,7 +82,7 @@ let flag=false;
     let active_suit=msg?.active_suit?Durak.active_suit:null;
     let gam_n = game; //console.log(result);
     let response = JSON.stringify({ 'type': 'round-taks', 'deck': gam_n.deck, 'players': gam_n.players, 'roles': gam_n.roles, 'cach': gam_n.cach, 'deck_back': gam_n.deck_back, 'deck_id': gam_n.deck_id, 'bito': false ,active_suit,ix:msg?.ix,check});
-	if(bot){console.log(bot._myrole==='attacker'&&!msg.ix)
+	if(bot){/*console.log(bot._myrole==='attacker'&&!msg.ix)*/
 if(!flag&&!msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
 	if(msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
 		(bot._myrole==='attacker')&&!msg.ix?setTimeout(() =>{bot.start()},500):null;

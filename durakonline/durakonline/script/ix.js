@@ -6,7 +6,7 @@
 export function startrenderText(e){
 
     this.check?check1.textContent=this.check[this._pos1]:null;
-    this.checkc?heck0.textContent=this.check[this._pos0]:null;
+    this.check?check0.textContent=this.check[this._pos0]:null;
 gameRole2.textContent=this._role[1];
 gameName2.textContent=this.usernames[this._pos1];
 gameRole0.textContent=this._role[0];
