@@ -1,4 +1,4 @@
-//import {rout4}from './rout4.js';
+
 import {imgclick} from"./imgclick.js";
 import {defclick} from"./defclick.js";
 import {start}from './startrender.js';

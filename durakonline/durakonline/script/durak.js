@@ -1,5 +1,4 @@
 import {positing as po}from './positing.js';
-import {Card} from"./card.js"
 import {Konduktor}from './konduktor.js';
 import {Rout}from './rout.js';
 import {Prerender}from './prerender.js';
@@ -11,7 +10,7 @@ import {imgclick} from"./imgclick.js";
 import {defclick} from"./defclick.js";
 //console.log(Umap)
 
-export var state={};
+//export var state={};
 const gameName0=document.getElementById('gameName0');
 const gameName2=document.getElementById('gameName2');
 const gameRole0=document.getElementById('gameRole0');/* class=" player0-role textA">defender</span> */
@@ -24,6 +23,8 @@ const contentCards=document.getElementById('contentCards');
 const check1 =document.getElementById('check1');
 const check0=document.getElementById('check0');
 export class DurakGame {
+ws={};
+bot=Boolean();	
 	    _pos0=null;//позиция юзера игры this.players[this._pos0]
 		_pos1=null;//позиция соответсвует this.players[this._pos1] и.тд
 		_pos2=null;
@@ -39,38 +40,39 @@ export class DurakGame {
 		_echo={};//сообщения сервера
 		ss=[];
       	 b; 
-   constructor(){
+   constructor(state,ws){
        this.startdeck=[];
 		this._body={};
-        this.name=state.r.name;//id gemes
-        this.ws=state.ws;//Websockets()
-        this.players_count = state.r.players_count;
-        this.deck = state.r.deck;
-        this.active_suit = state.r.active_suit;
-        this.attacker = state.r.attacker;
-        this.defender = state.r.defender;
-        this.players = state.r.players;
-        this.suits =state.r.suits //['Ch', 'B', 'K', 'P']
-        this.ranks =state.r.ranks //['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-        this.passes =state.r.passes;
-        this.target =state.r.target ;//позиция юзера this.players[this.target]
-        this.id =state.r.id ;//ид юзера
-        this.deck_id =state.r.deck_id;
-		this.static_role=state.r.pl_roles;
-		this.usernames=state.r.usernames;
+        this.name=state.name;//id gemes
+        this.ws=ws;//Websockets()
+        this.players_count = state.players_count;
+        this.deck = state.deck;
+        this.active_suit = state.active_suit;
+        this.attacker = state.attacker;
+        this.defender = state.defender;
+        this.players = state.players;
+        this.suits =state.suits //['Ch', 'B', 'K', 'P']
+        this.ranks =state.ranks //['6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+        this.passes =state.passes;
+        this.target =state.target ;//позиция юзера this.players[this.target]
+        this.id =state.id ;//ид юзера
+        this.deck_id =state.deck_id;
+		this.static_role=state.pl_roles;
+		this.usernames=state.usernames;
         this.echo=this.echo.bind(this);
-        this.cash=[[],[],[],[]];//карты в игре
-        this.ws.onmessage=this.echo; //обработчик сообщений сервера 
+        this.cash=[[],[],[],[]];//карты в игре 
 		this._round=0;
 		this._a=[];
-		this.check=state.r.check??[0,0];
-	  this.bot=this.usernames.includes('BOT');
+		this.check=state.check??[0,0];
+	  this.bot=state.usernames.includes('BOT');
 	  this.listenerClick=this.listenerClick.bind(this);
 	  this.listenInfo=this.listenInfo.bind(this);
 	   this.connect();
+	   this.ws.onmessage=this.echo;
 	 
 	          
 }
+
 konduktor=new Konduktor();
 new_count=false;
 
@@ -101,7 +103,7 @@ this.startdeckRender();
 start.call(this,true);
 let data=JSON.stringify({"install":true,users:this.deck_id,user:this.id,usernames:this.usernames})
 window.postMessage(data,origin );
-
+console.log(this)
 }
 requestUpdate(e){start.call(this,false);}
 

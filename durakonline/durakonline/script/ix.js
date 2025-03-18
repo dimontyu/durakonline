@@ -24,28 +24,30 @@ gameInfo0.addEventListener('click',this.listenInfo);
 
 function span_atr(x){let a=(x==="attacker")?"Я хожу":(x==="defender")?"Я кроюсь":null;return a};
 function tablE() {
+	
     const items = [
-      { id: 1, name: '' },
+      { id: 1, name: '',backgroundcolor: '#ffffff00' },
       {id: 2, name: 'G'},
       {id: 3, name: 'A'},
       {id: 4, name: 'M'},
       { id: 5, name: 'E' },
-      { id: 6, name: '' },
-      {id: 7, name: 'O'},
+      { id: 6, name: '',backgroundcolor: '#ffffff00' },
+        { id: 11, name: '',backgroundcolor: '#ffffff00' },
+		 {id: 7, name: 'O'},
       {id: 8, name: 'V'},
 	  {id: 9, name: 'E'},
         { id: 10, name: 'R' },
-        { id: 11, name: '' },
-        { id: 12, name: '' },
-        { id: 13, name: '' },
-        { id: 14, name: '' },
-        { id: 15, name: '' },
-        { id: 16, name: '' },
-        { id: 17, name: '' },
-        { id: 18, name: '' },
+        { id: 12, name: '',backgroundcolor: '#ffffff00' },
+        { id: 13, name: '',backgroundcolor: '#ffffff00' },
+        { id: 14, name: '',backgroundcolor: '#ffffff00' },
+        { id: 15, name: '',backgroundcolor: '#ffffff00' },
+        { id: 16, name: '',backgroundcolor: '#ffffff00' },
+        { id: 17, name: '',backgroundcolor: '#ffffff00' },
+        { id: 18, name: '',backgroundcolor: '#ffffff00' },
     ];
 let table_grid= document.querySelector(".table_gridstart");
 table_grid.querySelectorAll("span").forEach((item,i)=>{item.textContent=items[i].name;
+items[i].backgroundcolor?item.style.backgroundColor=items[i].backgroundcolor:item.style.backgroundColor='';
     item.classList.replace("g_g", "g_ns");
 })
 }

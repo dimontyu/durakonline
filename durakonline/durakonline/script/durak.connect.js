@@ -1,10 +1,10 @@
 "use strict";
-//import {} from"./autch.js"
-var pf = document.querySelector('pink-floyd');
 
+var pf = document.querySelector('pink-floyd');//autch.js connect
 
-
-import {DurakGame,state} from './durak.js';
+import {Doom} from"./durakstart.js";
+import {Card} from"./card.js";
+import {DurakGame} from './durak.js';
 
 var ws;
 
@@ -12,12 +12,10 @@ var id_prosses;
 //console.log(id_prosses);
 
 const Renderstart =async (response) => {
-	//console.log(response)
 	
-    let r=response;
-    state.r = r; state.ws = ws;
-    pf.ws = ws;
-const durak=new DurakGame();
+	const durak=new DurakGame(response,ws);
+    pf.ws = ws;//autch.js connect
+
 };
 const response_connect=async (response)=>{
 let n=Number(response.connect);console.log(n);let buttons=Buttons();
