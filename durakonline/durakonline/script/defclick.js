@@ -1,5 +1,5 @@
 //import {suitsMapping2,A,passesMapping}from './static.js';
-
+"use strict";
 export async function defclick(e){
 
 	if( e.target.style.top[0]==="-")return

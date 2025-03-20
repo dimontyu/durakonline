@@ -1,4 +1,4 @@
-
+"use strict";
 
 export class Konduktor{
 	#Wm1;

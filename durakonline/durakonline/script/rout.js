@@ -1,7 +1,7 @@
-
+"use strict";
 import {imgclick} from"./imgclick.js";
 import {defclick} from"./defclick.js";
-import {start}from './startrender.js';
+import {render}from './render.js';
 //надо сделать на 4 игроков?
 
 export function Rout(e){
@@ -57,8 +57,8 @@ this.w_m={"res":this.static_role};}
 
 //RENDERS
 //if(e.ix){this._echo=e;this.b=this.back_card();this.startdeckRender();return}
-if(e.ix){start.call(this,false)}
-else{render.call(this,e,this._pos1,this._role,this._pos0,ss)};
+if(e.ix){render.call(this,false)}
+else{renderR.call(this,e,this._pos1,this._role,this._pos0,ss)};
 
 
 	 }
@@ -209,7 +209,7 @@ console.log(this.static_role);
 	
 	
 	
-	async function render(e,_pos1,_role,_pos0,ss){e.ix?console.log(e.ix):null
+	async function renderR(e,_pos1,_role,_pos0,ss){e.ix?console.log(e.ix):null
 ss[_pos1]=ss[_pos1].filter((element,i) => element!==null)
 ss[_pos0]=ss[_pos0].filter((element,i) => element!==null)
 let ss1=ss[_pos1]

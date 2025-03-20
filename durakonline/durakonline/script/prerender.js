@@ -1,5 +1,5 @@
 //import {positing as A}from './positing.js';
-
+"use strict";
 export function Prerender(e){
 	
 

@@ -1,3 +1,5 @@
+"use strict";
+
 const target=document.querySelector("body > doom-arhitekt > div");
 target.addEventListener("dragover", (event) => {
   // prevent default to allow drop

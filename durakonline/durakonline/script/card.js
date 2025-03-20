@@ -1,4 +1,4 @@
-
+"use strict";
 let a = [`top: 190px;right: -200px;`, `top: 190px;right: -154px;`, `top: 190px;right: -102px;`, `top: 190px;right: -47px;`, `top: 190px;right:0px;`, `top: 190px;right:47px;`, `top: 120px;right: -200px;`, `top: 120px;right: -154px;`, `top: 120px;right: -102px;`, `top: 120px;right: -47px;`, `top: 120px;right:0px;`, `top: 120px;right:47px;`, `top: 120px;right:70px;`, `top: 120px;right:100px;`, `top: 120px;right:120px;`, `top: 120px;right:140px;`, `top: 120px;right:160px;`, `top: 120px;right:190px;`]
 let b = [`top: -390px; right: -200px;`, `top: -390px;right: -154px`, `top: -390px;right: -102px`,
  `top: -390px;right: -47px;`, `top: -390px;right:0px;`,

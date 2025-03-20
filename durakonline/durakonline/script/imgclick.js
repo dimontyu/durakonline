@@ -1,3 +1,4 @@
+"use strict";
 import {positing as po}from './positing.js';
 //import {suitsMapping2,A,passesMapping}from './static.js';
 export async function imgclick(e){

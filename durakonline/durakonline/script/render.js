@@ -1,9 +1,9 @@
-
+"use strict";
 import {Umap} from"./durakstart.js";
-import {startrenderText} from"./ix.js";
+import {renderText} from"./ix.js";
 
 const contentCards=document.getElementById('contentCards');
-export function start(e){//contentCards new content
+export function render(e){//contentCards new content
 
 this.players[this._pos1]=this.players[this._pos1].filter((element,i) => element!==null)
 this.players[this._pos0]=this.players[this._pos0].filter((element,i) => element!==null)
@@ -34,7 +34,7 @@ let a=document.getElementById(`${item[0]}${item[1]}`);
 setTimeout(()=>{a.prop2(i,true);},i*500)
 });
 
-startrenderText.call(this,e);
+renderText.call(this,e);
 //0
 /* setTimeout(()=>{ */		
 this.players[this._pos0].forEach((item,i)=>{

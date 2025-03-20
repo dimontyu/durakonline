@@ -1,3 +1,5 @@
+"use strict";
+
 export function Taks(){let a_cards=this.konduktor.get_aktive().length===0;
 let passes=this.passes!==0;
 let bool=(this._myrole==='attacker' || this._myrole==='attacker2' )?a_cards&&passes:!a_cards&&passes;

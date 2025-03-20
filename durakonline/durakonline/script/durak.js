@@ -1,8 +1,10 @@
+"use strict";
+
 import {positing as po}from './positing.js';
 import {Konduktor}from './konduktor.js';
 import {Rout}from './rout.js';
 import {Prerender}from './prerender.js';
-import {start,tablE0}from './startrender.js';
+import {render,tablE0}from './render.js';
 import {Umap} from"./durakstart.js";
 import {Taks,TaksiX} from"./events.js";
 //import {startiX}from './ix.js';
@@ -100,10 +102,10 @@ this._role=this._role.filter((w) => w!==null);
 this._myrole=this._role[0];
 this.b=this.back_card();
 this.startdeckRender();
-start.call(this,true);
+render.call(this,true);
 let data=JSON.stringify({"install":true,users:this.deck_id,user:this.id,usernames:this.usernames})
 window.postMessage(data,origin );
-console.log(this)
+//console.log(this)
 }
 requestUpdate(e){start.call(this,false);}
 
@@ -145,10 +147,10 @@ a.status.p=Number(11);
 
 if(e.broken_card){a.classList.remove("card-back");
 a.classList.add(a.url);
-handleEvent_de.call(this,e,a)	
+handleEvent_de(e,a,aa)	
 }
 else{setTimeout(()=>{a.classList.remove("card-back");
-a.classList.add(a.url);handleEvent_at.call(this,a,po[e.passes-1])},this.passes===0?2000:1000)}	
+a.classList.add(a.url);handleEvent_at(a,po[e.passes-1],aa)},this.passes===0?2000:1000)}	
 
 
 
@@ -197,7 +199,7 @@ let iy_text=(this._role[0]==="attacker")?"бито":"беру";
 gameInfo0.textContent=`${!aa?iy_text:ix_text}`;
 gameInfo2.textContent=span_atr(this._role[1]);	}
 
-function handleEvent_at(ev,pos){
+function handleEvent_at(ev,pos,aa){
 	//let ev=ev;
 
 
@@ -208,7 +210,7 @@ const animation = ev.animate(
 {left :ev.style.left,top:ev.style.top },	
 {left: pos.left,top:pos.top },
 
-  ],{ duration: (this.passes===0)?800:500, fill: "none", iterations: 1,easing: "ease-in-out", }
+  ],{ duration: (aa)?800:500, fill: "none", iterations: 1,easing: "ease-in-out", }
 );
 animation.id=`butt`;  
   
@@ -221,13 +223,13 @@ animation.onfinish = (evt) => { ev.style.left= pos.left;
 
 
 };
-function handleEvent_de(e,a){
+function handleEvent_de(e,a,aa){
 let m=e.broken_card[0]+e.broken_card[1];let sm=document.getElementById(m);
 const animation = a.animate(
   [{top:a.style.top,left:a.style.left},
 	  {top: sm.style.top,left:sm.style.left}
     
-  ],{ duration: (this.passes===0)?800:500, fill: "none", iterations: 1,easing: "ease-in-out", }
+  ],{ duration: (aa)?800:500, fill: "none", iterations: 1,easing: "ease-in-out", }
 );
 
 animation.onfinish = (evt) => {

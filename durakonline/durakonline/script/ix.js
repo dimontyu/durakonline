@@ -1,9 +1,9 @@
+"use strict";
 
 
 
 
-
-export function startrenderText(e){
+export function renderText(e){
 
     this.check?check1.textContent=this.check[this._pos1]:null;
     this.check?check0.textContent=this.check[this._pos0]:null;

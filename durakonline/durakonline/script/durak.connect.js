@@ -1,7 +1,5 @@
 "use strict";
 
-var pf = document.querySelector('pink-floyd');//autch.js connect
-
 import {Doom} from"./durakstart.js";
 import {Card} from"./card.js";
 import {DurakGame} from './durak.js';
@@ -12,9 +10,9 @@ var id_prosses;
 //console.log(id_prosses);
 
 const Renderstart =async (response) => {
+	new DurakGame(response,ws);
+	document.querySelector('pink-floyd').ws = ws;//autch.js connect
 	
-	const durak=new DurakGame(response,ws);
-    pf.ws = ws;//autch.js connect
 
 };
 const response_connect=async (response)=>{
