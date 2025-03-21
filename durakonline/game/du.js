@@ -2,18 +2,16 @@
 let DurakGame = require('./durak');
 const User = require('../models/user');
 const uuid = require('uuid');
-const Player=require('./player');
+
+
 module.exports = async function (userId, map, Game, path,botj) {
 	let exg = new DurakGame(path);
-	//let exg=durak;
-	//let bot=botj?new Bot(durak):null;
+	
 	const name_id = uuid.v4();//id- game example
-	//let exg = await durak.play_game();
+	
 	exg.name = name_id;
 	let y = await User.findOne({ session_id: userId});
-	//let y=(y1.name==="GamerX")?y1[1]:y1[0]):y1[0];
 	
-	//let y = await User.findOne({ session_id: userId });
 	let yname = y ??{ name: "COLLAPSE" };
 	Game.delete(userId);
 	
@@ -25,7 +23,7 @@ module.exports = async function (userId, map, Game, path,botj) {
 	exg.deck_back = [];
 	exg.roles = exg.pl_roles;
 	exg.check=check??null;
-	let player=new Player(exg,D_id,map,botj);
+    botj?initBot(exg,map):initPlayer(exg,D_id,map);	
 	
 };
 
@@ -53,3 +51,37 @@ async function sort(Game, usr, uid, path,botj) {
 	}
 
 }
+
+function initBot(durak,map){
+const Bot=require('./bot');		
+let Client=null
+let i = 0;	
+    for (const item of durak.deck_id) {
+
+		durak.id = item;
+		durak.target = i;
+
+		let msg = JSON.stringify(durak);
+		
+		let client = map.get(item);
+		
+		client?Client=client:null;
+		client ? client.send(msg.toString()) : null;
+				
+i += 1
+
+    }
+if(Client){let bot=new Bot();
+	bot.mongo(durak.usernames[0]);
+	bot.botclassInit(Client,durak);
+	Client.on('close', ()=>	{ durak = null;bot.konduktor=null;bot.map=null;bot=null;});
+	}
+};
+
+function initPlayer(exg,D_id,map){
+	
+const Player=require('./player');
+	
+new Player(exg,D_id,map);
+
+};

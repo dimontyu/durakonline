@@ -107,7 +107,7 @@ let data=JSON.stringify({"install":true,users:this.deck_id,user:this.id,username
 window.postMessage(data,origin );
 //console.log(this)
 }
-requestUpdate(e){start.call(this,false);}
+requestUpdate(e){render.call(this,false);}
 
 startdeckRender(){this.startdeck=this.deck.concat(this.players[this._pos0]).concat(this.players[this._pos1]);return this.startdeck};
 

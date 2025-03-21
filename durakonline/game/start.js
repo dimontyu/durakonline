@@ -5,8 +5,8 @@ const suits= ["Ch", "B", "K", "P"];
 const Game_game = require('./du.game');
 const gameover=require('./gameover');
 
-async function astart(msg){
-let Durak=this.durak;
+async function astart(Durak,msg){
+//let Durak=this.durak;
 let tg=Durak.target;
 let dbl=Durak.deck.length===0;
 	
@@ -21,19 +21,19 @@ let m_role=this._myrole;
 
 if((tp.length===0 || fp.length===0)&&dbl){
 	
-    if(fp.length===0){await gameover.call(this);//console.log('game aover1');
+    if(fp.length===0){await gameover(Durak);//console.log('game aover1');
 	this.check[idx]=Number(this.check[idx])+1;
 	//console.log(idx)
 	    let w_m={type:"set","taks":`${tg}`,"players":Durak.target,"id":Durak.id,"name":Durak.name,"deck_id":Durak.deck_id,"role":m_role,"roles":Durak.roles,active_suit:Durak.active_suit,ix:true};
-        await Game_game(w_m,this.map, Durak,this);this.checks();
+        await Game_game(w_m,this.map, Durak,this);this.checks(Durak);
 		//console.log(this.check)
 	    return 0;}
-	else {await gameover.call(this);
+	else {await gameover(Durak);
 	//console.log('game aover2');
 	this.check[tg]=Number(this.check[tg])+1;
 	//console.log(tg)
 	let w_m={type:"set","taks":true,players:idx,id:Durak.id,"name":Durak.name,"deck_id":Durak.deck_id,role:"defender","roles":Durak.roles,active_suit:Durak.active_suit,ix:true};
-	await Game_game(w_m,this.map, Durak,this,'game aover2');this.checks();
+	await Game_game(w_m,this.map, Durak,this,'game aover2');this.checks(Durak);
 	//console.log(this.check)
 	   return 0;}	
     	
@@ -45,7 +45,7 @@ if((fp.length===0 || tp.length===0)&&!dbl){
 	}
 else{			
 
-let k=(Durak.passes!==0)&&(m_role==='attacker')?filterAttach.call(this,Durak.players[tg]):filterAttach0.call(this,Durak.players[tg]);
+let k=(Durak.passes!==0)&&(m_role==='attacker')?filterAttach.call(this,Durak,Durak.players[tg]):filterAttach0.call(this,Durak,Durak.players[tg]);
 
 //console.log(`k:${k}`);
 
@@ -78,14 +78,14 @@ await Game_game(w_m,this.map, Durak,this)
 
 
 
-function filterAttach(Dur_ple){
+function filterAttach(durak,Dur_ple){
 	
 	
 let A=false;	
 let a_cards=this.konduktor.Aktive;
 let b_cards=this.konduktor.Back;	
 let a_b=a_cards.concat(b_cards);//console.log(a_b)
-let dpm=!this.durak.players.map((i)=>{if(i.length===0){return null}}).includes(null);
+let dpm=!durak.players.map((i)=>{if(i.length===0){return null}}).includes(null);
 
 for(let is=0;is<=Dur_ple.length-1;is++){
 
@@ -101,13 +101,13 @@ return A;
 };//npm start
 
 
-function filterAttach0(Dur_ple){
+function filterAttach0(durak,Dur_ple){
 let A=false;
 let ls=(Dur_ple.length>4);
 	
 for(let is=0;is<=Dur_ple.length-1;is++){
 //console.log(`Dur_ple:${Dur_ple[is]}`);
-let as=(Dur_ple[is][0]!==this.durak.active_suit);
+let as=(Dur_ple[is][0]!==durak.active_suit);
 let bl=ls&&as;	
 if(Dur_ple[is]&&bl){A=is;break}
 else if(Dur_ple[is]&&!ls){A=is;break}	

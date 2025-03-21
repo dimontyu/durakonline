@@ -1,6 +1,6 @@
 "use strict";
-import {imgclick} from"./imgclick.js";
-import {defclick} from"./defclick.js";
+//import {imgclick} from"./imgclick.js";
+//import {defclick} from"./defclick.js";
 import {render}from './render.js';
 //надо сделать на 4 игроков?
 

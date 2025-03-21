@@ -1,7 +1,7 @@
 
 
-async function gameOver(){
-await this.durak.game_game();	
+async function gameOver(durak){
+await durak.game_game();	
 	
 	
 	

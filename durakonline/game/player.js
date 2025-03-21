@@ -1,21 +1,16 @@
 'use strict'
 const User = require('../models/user');
 const Game_game = require('./du.game');
-const Bot=require('./bot');
+//const Bot=require('./bot');
 let ChatGame = require('../chat/chat');
 const gameover=require('./gameover');
 const mongoplayer=require('./mongoplayer');
 module.exports =class Player{
-   constructor(durak,D_id,map,botj){
-	   this.check=(durak.check&&!botj)?durak.check.reverse():durak.check??null;	
-       this.players=D_id;	
-       this.durak=durak;
-       this.map=map;
+   constructor(durak,D_id,map){
+	   this.check=(durak.check)?durak.check.reverse():durak.check??null;	
+       
        this.Message=this.Message.bind(this);
-	   this.bt=botj;
-	   this.bot=null;
-       this.init(this.durak,this.map);
-	   //this.durak.players_count===2&&!this.bt?this.mongo(this.durak):null;
+       this.init(durak,map,D_id);
     }
 async mongo(Durak){try{
 	const item=0
@@ -36,11 +31,13 @@ async mongo(Durak){try{
 
 
 	
-init(durak,map){
-this.durak.players_count===2&&!this.bt?this.mongo(this.durak):null;
-let Client=null	
+init(durak,map,D_id){
+	
+	
+
+durak.players_count===2?this.mongo(durak):null;
 let i = 0;	
-    for (const item of this.players) {
+    for (const item of D_id) {
 
 		durak.id = item;
 		durak.target = i;
@@ -48,26 +45,21 @@ let i = 0;
 		let msg = JSON.stringify(durak);
 		
 		let client = map.get(item);
-		if(this.bt){
-		client?null:this.bot=new Bot(durak);
-		client?Client=client:null;
-		client?client.on('close', ()=>
-		{ durak = null;this.bot.konduktor=null;this.bot.map=null;this.bot=null;}):null;
-		}
+		
 		client ? client.send(msg.toString()) : null;
-		if(!this.bt){
-		client?client.on('message',(message)=>{this.Message(item,client,message,map,durak,this.bt )}):null;
+		
+		client?client.on('message',(message)=>{this.Message(item,client,message,map,durak)}):null;
 		client?client.on('close', function () { durak = null;}):null;
+		i += 1
 		}
-i += 1
 
-    }
-return	[this.bt?this.bot.clnt=Client:null];
+    
+return 0;
 };
 async Message(userId,ws,message, map, durak,bt) {
 	//this.inits()[0];this.inits()[1];
 	let MSG = JSON.parse(message);
-	(MSG?.res)?[this.durak.roles=MSG.res,this.inits()[0],this.inits()[1]]:null;
+	(MSG?.res)?[durak.roles=MSG.res,this.inits(durak)[0],this.inits(durak)[1]]:null;
 	let type = MSG?.type;
 	switch (type) {
         case 'chat':
@@ -79,7 +71,7 @@ async Message(userId,ws,message, map, durak,bt) {
 	
 	//console.log('Att',this.durak.attacker,'\n','DF',this.durak.defender);
 	if (type === 'set' && durak !==null) {
-	await Game_game(MSG, map, durak,bt);
+	await Game_game(MSG, map, durak,false);
 	
 	//console.log('Att',this.durak.attacker,'\n','DF',this.durak.defender);
 	}
@@ -88,16 +80,16 @@ async Message(userId,ws,message, map, durak,bt) {
 	}
 	if (type === 'gameover' && durak !== null) {
 		let item=0;
-		if(durak.players_count===2 &&!this.bt){await mongoplayer(Number(MSG.players),durak.usernames);};
+		if(durak.players_count===2){await mongoplayer(Number(MSG.players),durak.usernames);};
 		
 		await gameover.call(this);
 		//console.log("GAMEOVER");
 		MSG.active_suit=durak.active_suit
-		await Game_game(MSG, map, durak,bt);
+		await Game_game(MSG, map, durak,false);
 	}
 	//console.log('Att',this.durak.attacker,'\n','DF',this.durak.defender);
  };
  
- inits(){return [this.durak.attacker=this.durak.players[this.durak.roles.indexOf('attacker')],this.durak.defender=this.durak.players[this.durak.roles.indexOf('defender')]];}
+ inits(durak){return [durak.attacker=durak.players[durak.roles.indexOf('attacker')],durak.defender=durak.players[durak.roles.indexOf('defender')]];}
 
 	};	

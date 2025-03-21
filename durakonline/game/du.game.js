@@ -85,7 +85,7 @@ let flag=false;
 	if(bot){/*console.log(bot._myrole==='attacker'&&!msg.ix)*/
 if(!flag&&!msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
 	if(msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
-		(bot._myrole==='attacker')&&!msg.ix?setTimeout(() =>{bot.start()},500):null;
+		(bot._myrole==='attacker')&&!msg.ix?setTimeout(() =>{bot.start(Durak)},500):null;
 		//setTimeout(() =>{map[0].send(response.toString())},400);
         
 	}
@@ -122,7 +122,7 @@ async function attaker_main(t, u, map, msg, Durak,bot) {
 	if(bot){
 if(!flag&&!msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
 	if(msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
-		(bot._myrole==='defender')&&!msg.ix?setTimeout(() =>{bot.start()},500):null;	
+		(bot._myrole==='defender')&&!msg.ix?setTimeout(() =>{bot.start(Durak)},500):null;	
 		
 		
 		//setTimeout(() =>{map[0].send(response.toString());
