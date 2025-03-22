@@ -1,6 +1,6 @@
 "use strict";
 import {positing as po}from './positing.js';
-//import {suitsMapping2,A,passesMapping}from './static.js';
+
 export async function imgclick(e){
 var client = window.innerWidth < "600";
 let pss=this.passes;	
@@ -21,11 +21,9 @@ let task= await matrix_attacker.call(this,j,k);
 if (task===true){
 	this.passes+=1;
 let u=this.players[j][k];	
-//let lft=po[this.passes-1].left;
 
-//this.konduktor.attach(u,lft);
 this.konduktor.set_aktive(u)
-this._a.push(u);  
+ 
 
 this.cash[j].push(this.players[j][k]);
 //console.log(this.cash[j])

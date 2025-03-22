@@ -35,8 +35,8 @@ this.url=''
   prop0(i,arr,n){//console.log(this.status)
   animationcard0.call(this,i,arr,n)
 //this.addEventListener('click',handle);
-this.addEventListener("dragstart", dragstartHandler);
-this.draggable="true"; 
+//this.addEventListener("dragstart", dragstartHandler);
+//this.draggable="true"; 
 
   };
   prop2(i,arr){animationcard2.call(this,i,arr);}
@@ -49,12 +49,12 @@ function handle(event){event.target.classList.remove("card-back");
 event.target.classList.add(event.target.url);
 
 }
-function dragstartHandler(ev) {
+/* function dragstartHandler(ev) {
 	//console.log(ev)
      //ev.dataTransfer.dropEffect = "move";
     ev.dataTransfer.setData("text/html", ev.target._id);
 	
-  }
+  } */
 function animationcard0(i,arr,n){
 	//n?console.log(i+n):console.log(i);
 let styleN=a[i];

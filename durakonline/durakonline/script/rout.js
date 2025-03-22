@@ -1,6 +1,5 @@
 "use strict";
-//import {imgclick} from"./imgclick.js";
-//import {defclick} from"./defclick.js";
+
 import {render}from './render.js';
 //надо сделать на 4 игроков?
 
@@ -29,7 +28,7 @@ let ss=Array.from(this.players);
         this.back =e.deck_back;
 		this.cash=e.cach;
         this.passes=0;
-		this._a=[];
+		
 if(e.ix){document.querySelector('.card_img').remove();
 this.b=this.back_card();
 this.startdeckRender();

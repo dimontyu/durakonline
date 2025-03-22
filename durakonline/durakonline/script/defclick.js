@@ -1,4 +1,4 @@
-//import {suitsMapping2,A,passesMapping}from './static.js';
+
 "use strict";
 export async function defclick(e){
 
@@ -81,16 +81,7 @@ if(broken_card){
 }		
 	
 	
-/* ev.style.top = !client?'-256px':'-375px';
-ev.classList.remove(`cards_number-${6}-hover`);
-ev.style.transform = 'scale(1.15)'; 
-ev.style.margin='2px';
-let broken_card=this.konduktor.broken_card();
-let wm3=this.konduktor.get_wm3(); 
-let wm4=this.konduktor.get_wm4();
-let pos_number=(this._pos2===Number(this._echo.players))||(this._pos3===Number(this._echo.players)); 
-ev.style.left=(pos_number&&wm4.has(broken_card))?wm4.get(broken_card):wm3.get(broken_card);
-console.log(broken_card)       */
+
   this.cash[j].push(this.players[j][k]);
   
   this.players[j].splice(k,1,null);

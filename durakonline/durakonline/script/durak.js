@@ -64,7 +64,7 @@ bot=Boolean();
         this.echo=this.echo.bind(this);
         this.cash=[[],[],[],[]];//карты в игре 
 		this._round=0;
-		this._a=[];
+		
 		this.check=state.check??[0,0];
 	  this.bot=state.usernames.includes('BOT');
 	  this.listenerClick=this.listenerClick.bind(this);
