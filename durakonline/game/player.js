@@ -82,7 +82,7 @@ async Message(userId,ws,message, map, durak,bt) {
 		let item=0;
 		if(durak.players_count===2){await mongoplayer(Number(MSG.players),durak.usernames);};
 		
-		await gameover.call(this);
+		await gameover(durak);
 		//console.log("GAMEOVER");
 		MSG.active_suit=durak.active_suit
 		await Game_game(MSG, map, durak,false);

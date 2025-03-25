@@ -129,10 +129,7 @@ this._echo=e;
 
 (e.pos!==undefined&&!e.ix)?this.rendercard(e):null;
  let eho=(e?.type==="round-taks");
-
-if(e?.type&&!eho){Prerender.call(this,e);renderText.call(this,null);}
-
-(e?.type&&!eho)?null:renderText.call(this,null) 
+(e?.type&&!eho&&e.pos)?null:renderText.call(this,null) 
 
 }
 
@@ -147,10 +144,18 @@ a.status.p=Number(11);
 
 if(e.broken_card){a.classList.remove("card-back");
 a.classList.add(a.url);
-handleEvent_de(e,a,aa)	
+handleEvent_de(e,a,aa).then((es)=>{es.finished.then((es)=>{
+Prerender.call(this,e);renderText.call(this,null);})
+	
+	})	
 }
 else{setTimeout(()=>{a.classList.remove("card-back");
-a.classList.add(a.url);handleEvent_at(a,po[e.passes-1],aa)},this.passes===0?2000:1000)}	
+a.classList.add(a.url);handleEvent_at(a,po[e.passes-1],aa).then((es)=>{es.finished.then((es)=>{
+Prerender.call(this,e);renderText.call(this,null)})
+});
+},aa?2000:0)
+}
+	
 
 
 
@@ -199,8 +204,7 @@ let iy_text=(this._role[0]==="attacker")?"бито":"беру";
 gameInfo0.textContent=`${!aa?iy_text:ix_text}`;
 gameInfo2.textContent=span_atr(this._role[1]);	}
 
-function handleEvent_at(ev,pos,aa){
-	//let ev=ev;
+async function handleEvent_at(ev,pos,aa){
 
 
 
@@ -219,11 +223,13 @@ animation.onfinish = (evt) => { ev.style.left= pos.left;
    ev.classList.remove(`cards_number-${6}-hover`);
    ev.style.transform = 'scale(1.15)';
    ev.style.zIndex = -1;ev.style.margin='2px';
-}		
 
+}
+
+return animation	
 
 };
-function handleEvent_de(e,a,aa){
+async function handleEvent_de(e,a,aa){
 let m=e.broken_card[0]+e.broken_card[1];let sm=document.getElementById(m);
 const animation = a.animate(
   [{top:a.style.top,left:a.style.left},
@@ -238,6 +244,8 @@ animation.onfinish = (evt) => {
     a.style.left,
     a.style.transform,
     a.style.zIndex,
-a.style.margin,]=[sm.style.top,/* sm.style.right, */sm.style.left,sm.style.transform,0,'16px']}
+a.style.margin,]=[sm.style.top,/* sm.style.right, */sm.style.left,sm.style.transform,0,'16px'];}
+
+return animation
 
 }
