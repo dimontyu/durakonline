@@ -149,11 +149,11 @@ Prerender.call(this,e);renderText.call(this,null);})
 	
 	})	
 }
-else{setTimeout(()=>{a.classList.remove("card-back");
+else{setTimeout(()=>{/* this.deck.length===0&&console.log(a); */if(true){a.classList.remove("card-back");
 a.classList.add(a.url);handleEvent_at(a,po[e.passes-1],aa).then((es)=>{es.finished.then((es)=>{
 Prerender.call(this,e);renderText.call(this,null)})
 });
-},aa?2000:0)
+}},aa?2000:0)
 }
 	
 

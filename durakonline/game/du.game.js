@@ -32,9 +32,9 @@ module.exports = async function (msg, map, Durak,bot,qp) {
 
 
 
-async function update(a, b, ps, map, msg, Durak,bot) {
+async function update(a, b, ps, map, msg, game,bot) {
 try {
-        let game = Durak;
+        
 
 if (game.players[a]) {
 
@@ -63,72 +63,63 @@ catch (error) {
 };
 
 async function defender_main(t, ui, map, msg, Durak,bot) {
-let flag=false;
-    
-    let game = Durak;
-	game.passes=0;
+
+	Durak.passes=0;
     bot?bot.konduktor.clearAll():null;
-    for (let ie = 0; ie <= (game.players_count - 1); ie++) {
-        game.players[ie] = await sortdek(game.players[ie])
-        // for( let i of game.cach[ie]){game.players[ui].push(i)};
-        game.cach[ie].forEach((i) => { game.players[ui].push(i) })
-        game.cach[ie] = [];
-        let n6 = game.players[ie].length;
+    for (let ie = 0; ie <= (Durak.players_count - 1); ie++) {
+        Durak.players[ie] = await sortdek(Durak.players[ie])
+        
+        Durak.cach[ie].forEach((i) => { Durak.players[ui].push(i) })
+        Durak.cach[ie] = [];
+        let n6 = Durak.players[ie].length;
         let nn6 = 6 - n6;
-        if (nn6 > 0 && game.deck.length !== 0) {await popdek(game.deck, game.players[ie], nn6)}
-        if (game.players[ie].length === 0) { game.players.splice[ie, 1];flag=true; }
+        if (nn6 > 0 && Durak.deck.length !== 0) {await popdek(Durak.deck, Durak.players[ie], nn6)}
+        if (Durak.players[ie].length === 0) { Durak.players.splice[ie, 1];/* flag=true; */ }
     }
 	let check=msg.ix&&bot?bot.check:null;
-    let active_suit=msg?.active_suit?Durak.active_suit:null;
-    let gam_n = game; //console.log(result);
-    let response = JSON.stringify({ 'type': 'round-taks', 'deck': gam_n.deck, 'players': gam_n.players, 'roles': gam_n.roles, 'cach': gam_n.cach, 'deck_back': gam_n.deck_back, 'deck_id': gam_n.deck_id, 'bito': false ,active_suit,ix:msg?.ix,check});
+    let active_suit=msg?.active_suit?msg?.active_suit:Durak.active_suit;
+    
+    let response = JSON.stringify({ 'type': 'round-taks', 'deck': Durak.deck, 'players': Durak.players, 'roles': Durak.roles, 'cach': Durak.cach, 'deck_back': Durak.deck_back, 'deck_id': Durak.deck_id, 'bito': false ,active_suit,ix:msg?.ix,check});
 	if(bot){/*console.log(bot._myrole==='attacker'&&!msg.ix)*/
-if(!flag&&!msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
-	if(msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
-		(bot._myrole==='attacker')&&!msg.ix?setTimeout(() =>{bot.start(Durak)},500):null;
+	setTimeout(() =>{map[0].send(response.toString())},400);	
+	    if((bot._myrole==='attacker')&&!msg.ix){setTimeout(() =>{bot.start(Durak)},500);return}	
 		//setTimeout(() =>{map[0].send(response.toString())},400);
         
 	}
-    else  {gam_n.deck_id.forEach((client) => {
+    else  {Durak.deck_id.forEach((client) => {
 		map.has(client) ? map.get(client).send(response.toString()) : null })
 	}
 
 }
 async function attaker_main(t, u, map, msg, Durak,bot) {
-   let flag=false; 
-    let game = Durak;
-	game.passes=0;
+  
+	Durak.passes=0;
     bot?bot.konduktor.clearAll():null;
-	let num = game.players.length;
+	let num = Durak.players.length;
     for (let ie = 0; ie <= num - 1; ie++) {
 
-        game.players[ie] = await sortdek(game.players[ie]);
+        Durak.players[ie] = await sortdek(Durak.players[ie]);
 
-        let nn = game.players[ie].length;
+        let nn = Durak.players[ie].length;
         let nn6 = 6 - nn
-        await pop_dek(nn6, game, ie)
-        if (game.cach[ie].length > 0) {
-            await back_dek(game.cach, ie, game.deck_back)
+        await pop_dek(nn6, Durak, ie)
+        if (Durak.cach[ie].length > 0) {
+            await back_dek(Durak.cach, ie, Durak.deck_back)
 
         }
-        game.cach[ie] = [];
-        if (game.players[ie].length === 0) { game.players.splice[ie,1];flag=true }
+        Durak.cach[ie] = [];
+        if (Durak.players[ie].length === 0) { Durak.players.splice[ie,1];/* flag=true */ }
     }
 	let check=msg.ix&&bot?bot.check:null;
-	let active_suit=msg?.active_suit?Durak.active_suit:null
-    let gam_n = game; //console.log(result)
-	msg?.active_suit?`active_suit:${Durak.active_suit}`:null
-    let response = JSON.stringify({ 'type': 'round-taks', 'deck': gam_n.deck, 'players': gam_n.players, 'roles': gam_n.roles, 'cach': gam_n.cach, 'deck_back': gam_n.deck_back, 'deck_id': gam_n.deck_id, 'bito': true ,active_suit,ix:msg?.ix,check});
-	if(bot){
-if(!flag&&!msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
-	if(msg.ix){ setTimeout(() =>{map[0].send(response.toString())},400);}	
-		(bot._myrole==='defender')&&!msg.ix?setTimeout(() =>{bot.start(Durak)},500):null;	
-		
-		
-		//setTimeout(() =>{map[0].send(response.toString());
-	   // bot._myrole==='defender'&&!msg.ix?bot.start():null },400)
+	let active_suit=msg?.active_suit?msg?.active_suit:Durak.active_suit;
+   
+    let response = JSON.stringify({ 'type': 'round-taks', 'deck': Durak.deck, 'players': Durak.players, 'roles': Durak.roles, 'cach': Durak.cach, 'deck_back': Durak.deck_back, 'deck_id': Durak.deck_id, 'bito': true ,active_suit,ix:msg?.ix,check});
+	if(bot){ setTimeout(() =>{map[0].send(response.toString())},400)
+
+	    if((bot._myrole==='defender')&&!msg.ix){setTimeout(() =>{bot.start(Durak)},500);return};
+
 	}
-    else { gam_n.deck_id.forEach((client) => { 
+    else { Durak.deck_id.forEach((client) => { 
 	    map.has(client) ? map.get(client).send(response.toString()) : null })
 	}
 }

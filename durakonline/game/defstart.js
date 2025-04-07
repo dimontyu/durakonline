@@ -20,29 +20,32 @@ let m_role=this._myrole;
 //console.log(tp)
 //dbl?console.log(fp):null
 //dbl?console.log(tp):null
-	
+const w_m={type:"set","taks":true,"players":Durak.target,"id":Durak.id,"name":Durak.name,"deck_id":Durak.deck_id,"role":m_role,"roles":Durak.roles,};	
 
 if((fp.length===1 || tp.length===0)&&dbl){
 	
-    if(fp.length===1){await gameover(Durak);//console.log('game dover1');
+    if(fp.length===1){await gameover(Durak);//console.log('Dgame dover1');
 	this.check[idx]=Number(this.check[idx])+1;
 	//console.log(idx)
-	    let w_m={type:"set","taks":`${tg}`,"players":idx,"id":Durak.id,"name":Durak.name,"deck_id":Durak.deck_id,"role":m_role,"roles":Durak.roles,active_suit:Durak.active_suit,ix:true};
+	 
+		w_m.ix=true;
         await Game_game(w_m,this.map, Durak,this);this.checks(Durak);
 		//console.log(this.check)
 	    return 0;}
-	else{await gameover(Durak);//console.log('game dover2');
+	else if( tp.length===0){await gameover(Durak);//console.log('Dgame dover2');
 	this.check[tg]=Number(this.check[tg])+1;
 	//console.log(tg)
-	    let w_m={type:"set","taks":true,"players":Durak.players[tg],"id":Durak.id,"name":Durak.name,"deck_id":Durak.deck_id,"role":"attacker","roles":Durak.roles,active_suit:Durak.active_suit,ix:true};
+	    
+		w_m.ix=true;w_m.role="attacker";
         await Game_game(w_m,this.map, Durak,this);this.checks(Durak)
 		//console.log(this.check)
 	    return 0;}	
     	
 	}
-if((fp.length===0 || tp.length===0)&&!dbl){
-	//console.log('game game');
-	await Game_game(msg,this.map, Durak,this);let w_m={type:"set","taks":`${tg}`,"players":Durak.target,"id":Durak.id,"name":Durak.name,"deck_id":Durak.deck_id,"role":m_role,"roles":Durak.roles,};await Game_game(w_m,this.map, Durak,this);return 0;	 
+if((tp.length===0)&&!dbl){
+	//console.log('Dgame game');
+	w_m.role="attacker";
+	await Game_game(msg,this.map, Durak,this);await Game_game(w_m,this.map, Durak,this);return 0;	 
 	}	
 
 
@@ -65,15 +68,30 @@ role:m_role,
 broken_card:this.konduktor.broken_card,
 passes:Durak.passes,
 roles:Durak.roles};	
-let m=this.map[0];		
-	
-setTimeout(() =>{m.send(JSON.stringify(Mess).toString())},300)	
+let m=this.map[0];
+
+let tp=Durak.players[tg].filter(i=>i!==null);		
+if(tp.length===0){
+
+w_m.role="attacker";	
+	if(!dbl){m.send(JSON.stringify(Mess).toString());//console.log('Dgame gameqk!dbl');
+            setTimeout(() =>{Game_game(w_m,this.map, Durak,this)},300);
+			}
+        else if(dbl){
+		    w_m.ix=true;//console.log('Dgame gameqkdbl');
+		    m.send(JSON.stringify(Mess).toString());
+		    await gameover(Durak);
+            setTimeout(() =>{Game_game(w_m,this.map, Durak,this)},300);
+       }
+}else if(tp.length>0){
+	//console.log('Dgame game qk tp.length>0');	
+    setTimeout(() =>{m.send(JSON.stringify(Mess).toString())},300)}	
 	
 	
 }
-if(qk===false){
+if(qk===false){//console.log('Dgame game qk===false');
 await Game_game(msg,this.map, Durak,this);
-let w_m={type:"set","taks":`${tg}`,"players":Durak.target,"id":Durak.id,"name":Durak.name,"deck_id":Durak.deck_id,"role":m_role,"roles":Durak.roles,};
+
 await Game_game(w_m,this.map, Durak,this);		 
  };
 };

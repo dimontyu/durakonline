@@ -239,16 +239,18 @@ e.players[_pos0].forEach((item,i)=>{
 let a=document.getElementById(`${item[0]}${item[1]}`);
 
 setTimeout(()=>{
+if(true){	
 a.status.p===11||((typeof a.status.play)==="boolean")?
 a.addEventListener("click",this.listenerClick,false):null;	
 
 a.classList.remove("card-back");
+
 a.classList.add(a.url);
 a.classList.contains('cards_number-6-hover')?null:a.classList.add('cards_number-6-hover');
 
 [a.status.p,a.status.play,a.status.pos,a.status.role]=[12,_pos0,i,_role[0]];	
 fint0.includes(a.id)?a.prop0(i,true,'S'):a.prop0(i,false,'S');
-
+}
 },500+i*200)
 });
 
