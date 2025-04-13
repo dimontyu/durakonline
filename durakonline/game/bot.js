@@ -21,7 +21,7 @@ _myrole='';
 	}
  checks(du){
 	 let fci=(this.check).map(i=>{return i});
-	 User.findOne({ name:du.usernames[0]},(err,result)=>{
+	 User.findOne({ name:du},(err,result)=>{
  if (err){ return console.log(err)};		 
 	 if(result&&result?.checked){result.checked.set('bot',fci); result.save();}}	).catch((error)=>console.log(error))
 		 };	

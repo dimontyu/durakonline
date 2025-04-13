@@ -28,7 +28,7 @@ if((tp.length===0 || fp.length===0)&&dbl){
 	//console.log('game aover1fp.length===0')
 	 
 		w_m.ix=true;
-        await Game_game(w_m,this.map, Durak,this);this.checks(Durak);
+        await Game_game(w_m,this.map, Durak,this);this.checks(Durak.usernames[0]);
 		//console.log(this.check)
 	    return 0;}
 	else if(tp.length===0) {await gameover(Durak);
@@ -37,7 +37,7 @@ if((tp.length===0 || fp.length===0)&&dbl){
 	//console.log(tg)
 	
 	w_m.ix=true;
-	await Game_game(w_m,this.map, Durak,this,'game aover2');this.checks(Durak);
+	await Game_game(w_m,this.map, Durak,this,'game aover2');this.checks(Durak.usernames[0]);
 	//console.log(this.check)
 	   return 0;}	
     	
@@ -83,7 +83,10 @@ if( tp.length===1||tp.length===0){/* if(tp.length===0){ */
        m.send(JSON.stringify(Mess).toString());
 		
 		await gameover(Durak);
-	 setTimeout(() =>{  Game_game(w_m,this.map, Durak,this);},3000);}
+		this.check[tg]=Number(this.check[tg])+1;
+	 setTimeout(() =>{  Game_game(w_m,this.map, Durak,this);},3000);
+	 this.checks(Durak.usernames[0]);
+	 }
 }
 
 else if(tp.length>1){//console.log('tp.length>1game gamexxx')

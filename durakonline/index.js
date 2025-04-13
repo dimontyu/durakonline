@@ -57,9 +57,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
  * Connect to MongoDB.
  */
 
-//var dev_db_url =process.env.MONGODB_URI;
-//var mongoDB =  dev_db_url;
-var mongoDB = 'mongodb://localhost:27017/' ;
+var dev_db_url =process.env.MONGODB_URI;
+var mongoDB =  dev_db_url;
+//var mongoDB = 'mongodb://localhost:27017/' ;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useFindAndModify: false, useUnifiedTopology: true });
 mongoose.Promise = global.Promise;
 

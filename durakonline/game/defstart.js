@@ -29,7 +29,7 @@ if((fp.length===1 || tp.length===0)&&dbl){
 	//console.log(idx)
 	 
 		w_m.ix=true;
-        await Game_game(w_m,this.map, Durak,this);this.checks(Durak);
+        await Game_game(w_m,this.map, Durak,this);this.checks(Durak.usernames[0]);
 		//console.log(this.check)
 	    return 0;}
 	else if( tp.length===0){await gameover(Durak);//console.log('Dgame dover2');
@@ -37,7 +37,7 @@ if((fp.length===1 || tp.length===0)&&dbl){
 	//console.log(tg)
 	    
 		w_m.ix=true;w_m.role="attacker";
-        await Game_game(w_m,this.map, Durak,this);this.checks(Durak)
+        await Game_game(w_m,this.map, Durak,this);this.checks(Durak.usernames[0])
 		//console.log(this.check)
 	    return 0;}	
     	
@@ -81,7 +81,9 @@ w_m.role="attacker";
 		    w_m.ix=true;//console.log('Dgame gameqkdbl');
 		    m.send(JSON.stringify(Mess).toString());
 		    await gameover(Durak);
+			this.check[tg]=Number(this.check[tg])+1;
             setTimeout(() =>{Game_game(w_m,this.map, Durak,this)},300);
+			this.checks(Durak.usernames[0]);
        }
 }else if(tp.length>0){
 	//console.log('Dgame game qk tp.length>0');	
